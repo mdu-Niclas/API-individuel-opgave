@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>JavaScript Boilerplate</title>
+  <meta charset="utf-8" />
+  <title>Display a map</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Chivo&family=Righteous&display=swap" rel="stylesheet">
+  
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  </head>
+  
+
+
+<body>
+
+<img class="logo" src="images/munich-oktoberfest-beer-german-cuisine-paulaner-brewery-oktoberfest.png" alt="logo">
+
+
+<h2 class="underoverskrift"> OKTOBERFEST I MÜNCHEN, Theresienwiese </h2>
+<h3 class="brødtekst"> Så er det blevet tid til den årlige oktoberfest i München! <br> <br> Se placering: </h3>
+
+
+
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibmljbGFzLXNhbXNvZSIsImEiOiJja2Z4cXlwYzMwMzRnMnRtNzBxcGxxcmlrIn0.F6_9u9YmalQu036XrHmN9Q';
+var map = new mapboxgl.Map({
+container: 'map', // container id
+style: 'mapbox://styles/niclas-samsoe/ckfzz8oi208xz19lm9c6hg1i3', // style URL
+center: [11.5500, 48.1313], // starting position [lng, lat]
+pitch: 50, // pitch in degrees
+bearing: 10, // bearing in degrees
+zoom: 14.5 // starting zoom
+   
+    
+});
+    
+
+    var marker = new mapboxgl.Marker()
+.setLngLat([11.5500, 48.1313])
+.addTo(map);  
+    
+
+    
+</script>
+
+
+
+<h2 class="overskrift2"> Se hvordan vejret er i München</h2>
+
+
+ <div id="result"></div>
+
+<script>
+    
+    
+$(document).ready(function() {
+
+    // get the weather data via query URI
+    fetch("http://api.openweathermap.org/data/2.5/weather?q=Munich&lang=da&units=metric&appid=ae26cff51acad04813cfdd4dc6c9a172").then(response => {
+        return response.json();
+    }).then(data => {
+
+        // Work with JSON data here
+        console.log(data); 
+        
+    
+
+        // tilføjer ("append") en div til vejroplysninger
+        
+        $('#result').append(
+
+           
+            '<div class="weatherInfo">' +
+
+            //  bynavn
+            '<h1> ' + data.name + ' </h1>' +
+
+            // tilføjer en beskrivelse af vejret lige nu
+            '<h2>Vejr: ' + data.weather[0].description + '</h2>' +
+
+            // tilføjer vejrsymbol
+            '<figure>' +
+            '<img src="images/' + data.weather[0].icon + '.png" alt="Vejrsymbol">' +
+            '</figure>' +
+
+        
+
+            // afslutter #weatherInfo taggen
+            '</div>'); // .append til #result slut
+
+        // here are the icons: https://openweathermap.org/weather-conditions 
+
+
+
+  }).catch(err => {
+        // Do something for an error here
+        console.log('There was an error ...');
+    });
+
+}); // document ready end
+
+    </script>
+
+
+</body>
+
+
+
+
+  <!-- scripts -->
+  <script src="js/js.js"></script>
+
+</html>

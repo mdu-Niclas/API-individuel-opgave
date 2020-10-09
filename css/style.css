@@ -1,0 +1,81 @@
+/**
+ * file: style.css
+ * purpose: styles, animation etc
+ * further development: meyer reset perhaps?
+ **/
+
+body { 
+    margin:0; 
+    padding:0; 
+    background-color:gainsboro;
+    color: black;
+}
+
+
+
+	#map { 
+        position: absolute; 
+        top: 54%; 
+        bottom: 0; 
+        width: 50%;
+        height: 50%;
+        border-style: solid;
+        border-color: #ab5a22;
+        left: 25%;
+        
+    }
+
+.weatherwidget-io {
+   width: 100%;
+   margin-top: 40%;
+}
+
+.overskrift {
+    text-align: center;
+    font-size: 70px;
+    position: relative;
+ 
+}
+
+.underoverskrift {
+    text-align: center;
+    margin-left: 20%;
+    width: 60%;
+    font-size: 35px;
+    color: #ab5a22;
+    font-family: 'Chivo', sans-serif;
+    
+}
+
+
+
+.logo {
+    width: 20%;
+    margin-left: 40%;
+}
+
+#result {
+    margin-top: 5%;
+    color: black;
+    text-align: center;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    border-style: solid;
+    border-color: #ab5a22;
+    width:50%;
+    font-family: 'Chivo', sans-serif;
+    
+}
+
+.brødtekst {
+    text-align: center;
+    font-family: 'Chivo', sans-serif;
+}
+
+.overskrift2 {
+    margin-top:35%;
+    text-align: center;
+    color: #ab5a22;
+    font-family: 'Chivo', sans-serif;
+    
+}
